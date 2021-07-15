@@ -11,29 +11,22 @@ function sleep(ms) {
 const execSync = cmd => {
   return new Promise((resolve, reject) => {
     exec(cmd, (error, stdout, stderr) => {
-      if (error) {
-        console.warn(error);
-      }
-     stdout ? resolve(...stdout.split('\n')) : reject(stderr);
+      if (error) console.warn(error);
+     !(stderr||error) 
+     ? resolve(...stdout.split('\n')) 
+     : reject(new Error(`${stderr} ${error}`));
     });
   });
 };
 
-const focusWindow = WID => {
-  return new Promise((resolve, reject) => {
-    exec(`xdotool windowactivate ${WID}`, function(error, stdout, stderr) {
-      if (error || stderr) reject(error);
-      else resolve(WID);
-    });
-  });
-};
 
 const sessionBus = dbus.sessionBus();
 if (!sessionBus) throw new Error("Failed to connect to the session bus");
 
 createKRunnerInterface({
   path: "/joplin",
-  async runFunction(match) {
+  async runFunction(match,action) {
+
     const [note, folder] = match.split(":");
 
     const path = folder
@@ -44,11 +37,12 @@ createKRunnerInterface({
     await execSync(`echo "$(xdotool search --onlyvisible --class joplin)"`)
       .then(async (WID) => {
         await fetch(path).then( () => {
-        focusWindow(WID);
+        // Focus window
+        execSync(`xdotool windowactivate ${WID}`)
         });
       })
-      .catch(async exc => {
-        // Client not open
+      .catch(async ex => {
+        // Open client 
             var proc = require("child_process").spawn(config.runner.joplinPath, [] , {detached:true, stdio:['ignore']});
             proc.unref();
 
@@ -56,7 +50,8 @@ createKRunnerInterface({
       do sleep 1; done; printf "$WID"`).then(async (WID) => {      
           await execSync("sleep 2s && echo ''").then(async ()=>{ // wait for client/plugin to init
           await fetch(path).then((x)=>{ 
-          focusWindow(WID);
+          // Focus window
+          execSync(`xdotool windowactivate ${WID}`).catch()
           }).catch((e) =>
           console.error(e) 
           );
@@ -65,7 +60,7 @@ createKRunnerInterface({
         });
       });
   },
-  async matchFunction(query) {
+  async matchFunction(query,log) {
     if (query.replace(/ .*/, "") !== config.runner.prefix) matchFunction();
 
     query = query
@@ -82,7 +77,11 @@ createKRunnerInterface({
     }
 
     let results = await fetch(
-      `http://localhost:${config.webClipper.port}/search?query=${query}&order_by=${config.runner.order_by}&order_dir=${config.runner.order_dir}&limit=${config.runner.show}&token=${config.webClipper.token}`
+      `http://localhost:${config.webClipper.port}/search?query=${query}\
+      &order_by=${config.runner.order_by}\
+      &order_dir=${config.runner.order_dir}\
+      &limit=${config.runner.show}\
+      &token=${config.webClipper.token}`
     )
       .then(function(res) {
         return res.json();
@@ -111,7 +110,6 @@ createKRunnerInterface({
     });
 
     query = /:/.test(query) ? query.split(":")[query.split(":").length -1] : query; // ignore filters
-    console.log(query)
     if (folder) {
       const searchFolder = await fetch(
         `http://localhost:${config.webClipper.port}/search?query=${folder}&type=folder&token=${config.webClipper.token}`

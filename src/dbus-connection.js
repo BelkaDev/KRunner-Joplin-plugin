@@ -1,7 +1,7 @@
 const dbus = require("dbus-native");
 
 const sessionBus = dbus.sessionBus();
-//if (!sessionBus) throw new Error('Could not connect to session bus');
+if (!sessionBus) throw new Error('Could not connect to session bus');
 sessionBus.requestName("net.belka.joplin", 0x04, (err, code) => {
   if (err) throw new Error(err);
 
