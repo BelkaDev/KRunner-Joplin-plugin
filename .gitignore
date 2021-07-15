@@ -109,3 +109,5 @@ public/
 
 # Build files
 bin
+
+config.js
