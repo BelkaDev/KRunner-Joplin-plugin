@@ -9,11 +9,10 @@ This plugin uses DBus to communicate with KRunner.
 
 ## Installation
 
-```
+``` bash
 git clone https://github.com/BelkaDev/KRunner-joplin-plugin
 cd KRunner-joplin-plugin
 chmod +x install.sh && ./install.sh
-
 ```
 ## Features
 * Lookup notes following the joplin data API [documentation ](https://joplinapp.org/api/references/rest_api/)
@@ -28,11 +27,11 @@ chmod +x install.sh && ./install.sh
 ### Notes aren't showing up
 * Make sure a joplin client or daemon is running in server mode (enable webClipper and check token in config file) 
 * Make sure you have an active dbus session running using 
-```
+```bash
 env | grep DBUS_SESSION_BUS_ADDRESS
 ```
 if nothing shows up, add it manually in your shell settings file:
-```
+```bash
 echo "export $(dbus-launch | head -n1)" >> ~/.bashrc
 ```
 
