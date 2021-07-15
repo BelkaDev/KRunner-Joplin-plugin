@@ -1,0 +1,15 @@
+[Desktop Entry]
+Name=joplin
+Comment=Krunner plugin to open and create notes
+X-KDE-ServiceTypes=Plasma/Runner
+Type=Service
+Icon=joplin
+X-KDE-PluginInfo-Author=BelkaDev
+X-KDE-PluginInfo-Email=belk5@hotmail.com
+X-KDE-PluginInfo-Name=joplin
+X-KDE-PluginInfo-Version=0.1
+X-KDE-PluginInfo-License=GPL-3.0
+X-KDE-PluginInfo-EnabledByDefault=true
+X-Plasma-API=DBus
+X-Plasma-DBusRunner-Service=net.belka.joplin
+X-Plasma-DBusRunner-Path=/joplin

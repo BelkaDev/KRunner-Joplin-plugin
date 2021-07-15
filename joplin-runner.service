@@ -1,0 +1,3 @@
+[D-BUS Service]
+Name=net.belka.joplin
+Exec=%{BASE_DIR}/.local/share/kservices5/joplin-runner/src/index.js
