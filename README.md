@@ -11,7 +11,7 @@ This plugin uses DBus to communicate with KRunner.
 
 ``` bash
 
-https://raw.githubusercontent.com/BelkaDev/KRunner-Joplin-plugin/master/install.sh | sh
+curl -s https://raw.githubusercontent.com/BelkaDev/KRunner-Joplin-plugin/master/install.sh | sh
 
 ### Or
 git clone https://github.com/BelkaDev/KRunner-joplin-plugin
@@ -64,3 +64,6 @@ echo "export $(dbus-launch | head -n1)" >> ~/.bashrc
 
 ### Config file isn't updating
 * Run `updateSettings.sh` to update your config changes.
+
+### I want to delete the runner
+* Run `uninstall.sh`

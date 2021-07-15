@@ -118,7 +118,7 @@ createKRunnerInterface({
       if (notebook.items)
         output.push([
           `${query.replace(folder, "")}:${notebook.items[0].id}`,
-          `Create new note "${query.replace(folder, "")}" in ${
+          `Create new note "${query.replace(folder+" ", "")}" in ${
             notebook.items[0].title
           }`,
           "joplin",
