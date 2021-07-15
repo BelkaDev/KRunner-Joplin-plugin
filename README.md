@@ -1,25 +1,30 @@
 # Plasma Joplin-runner
 
-This plugin uses DBus to communicate with KRunner.
+
+This plugin uses DBus to communicate with KRunner. <br/><br/>
+![demo](https://github.com/BelkaDev/KRunner-Joplin-plugin/blob/master/assets/demo.gif) <br/><br/>
+Usage: `<prefix> <filter>:<search>` or `<prefix> <notebook>/<filter>:<search>` ([Filters list](https://joplinapp.org/help/#search-filters))
 
 
-## Dependencies
+## Requirements
 - This plugin relies on [sendAction](https://github.com/BelkaDev/joplin-send-action-plugin) plugin to control the Joplin client externally.
-- xdotool  
+- [Xdotool](https://github.com/jordansissel/xdotool) utility
 
 ## Installation
-
 ``` bash
-
 curl -s https://raw.githubusercontent.com/BelkaDev/KRunner-Joplin-plugin/master/install.sh | sh
-
 ### Or
 git clone https://github.com/BelkaDev/KRunner-joplin-plugin
 cd KRunner-joplin-plugin
 chmod +x install.sh && ./install.sh
 ```
-Note: The runner will not work without updating `config.js`
-Make sure to edit the config file and run `updateSettings.sh` to apply your settings.
+Important: The runner will not work without updating `config.js` <br/>
+Make sure to edit the config file and run `updateSettings.sh` to apply your changes. <br/>
+You can fetch notes from a headless Joplin server using this command (better to run on startup):
+```bash
+# Replace config file with your own
+joplin --profile ~/.config/joplin-desktop/ server start
+```
 
 ## Manual installation
 ```bash
@@ -34,7 +39,6 @@ copy file `joplin-runner.service` to  `~/.local/share/dbus-1/services/joplin-run
 ```bash
 kquitapp5 krunner
 ```
-
 
 ## Features
 * Lookup notes following the joplin data API [documentation ](https://joplinapp.org/api/references/rest_api/)
