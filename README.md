@@ -1,10 +1,18 @@
+
 # KRunner-Joplin-plugin 
 
+This plugin uses DBus to communicate with KRunner. 
 
-This plugin uses DBus to communicate with KRunner. <br/><br/>
-![demo](https://github.com/BelkaDev/KRunner-Joplin-plugin/blob/master/assets/demo.gif) <br/><br/>
-Usage: `<prefix> <filter>:<search>` or `<prefix> <notebook>/<filter>:<search>` ([Filters list](https://joplinapp.org/help/#search-filters))
-Requirements: Xdotool
+https://user-images.githubusercontent.com/49416514/126002977-60662938-0110-441f-b57c-7084f94824ee.mp4
+
+
+Usage:
+- Search all notes: `<prefix> <filter>:<query>`
+- Search all notes inside a notebook `<prefix> <notebook>/<filter>:<search>` <br/>
+[Filters reference](https://joplinapp.org/help/#search-filters) from Joplin API. <br/>
+
+Requirements:
+- Xdotool
 
 ## Installation
 
