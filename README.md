@@ -57,7 +57,7 @@ chmod +x src/index.js
 ```
 * Edit `Config.js` File
 * Copy folder to `~/.local/share/kservices5/joplin-runner`
-* Copy file `joplin-runner.service` to  `~/.local/share/dbus-1/services/joplin-runner.service`
+* Copy file `joplin-runner.service` to  `~/.local/share/dbus-1/services/joplin-runner.service` (change ${BASE_DIR} first)
 ```bash
 kquitapp5 krunner
 ```
