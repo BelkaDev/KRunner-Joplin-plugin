@@ -8,7 +8,7 @@ Requirements: Xdotool
 
 ## Installation
 
-#### Joplin Send Action plugin
+### Joplin Send Action plugin
 First, you need to install the latest released JPL plugin package (*.jpl) from [here](https://github.com/BelkaDev/joplin-send-action-plugin/releases/tag/V1.0.0). Then:
 - Cmd :
 ```bash
@@ -53,7 +53,7 @@ chmod +x src/index.js
 ```bash
 kquitapp5 krunner
 ```
-
+***
 ## Features
 * Search, open, create new notes.
 * Send focus to client upon selection.
