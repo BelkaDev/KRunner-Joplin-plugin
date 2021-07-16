@@ -25,7 +25,7 @@ cp com.joplin.sendAction.jpl ~/.config/joplin-desktop/plugins
 Restart Joplin to enable the plugin.
 ***
 ### Krunner plugin
-
+##### CMD
 ``` bash
 curl -s https://raw.githubusercontent.com/BelkaDev/KRunner-Joplin-plugin/master/install.sh | sh
 ### Or
@@ -40,7 +40,7 @@ You can fetch notes from a daemonized Joplin instance using this command (run on
 joplin --profile ~/.config/joplin-desktop/ server start
 ```
 
-## Manual
+##### Manual
 ```bash
 git clone https://github.com/BelkaDev/KRunner-joplin-plugin
 cd KRunner-joplin-plugin
