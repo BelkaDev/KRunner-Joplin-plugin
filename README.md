@@ -3,11 +3,7 @@
 
 This plugin uses DBus to communicate with KRunner. 
 
-
-
-https://user-images.githubusercontent.com/49416514/126006917-b305a9c5-d6b1-4bcc-94b7-466787250971.mp4
-
-
+https://user-images.githubusercontent.com/49416514/126008779-d9b0d368-8517-4d2c-ae8a-4f6173c43cdb.mp4
 
 
 Usage:
