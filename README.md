@@ -1,4 +1,4 @@
-# Plasma Joplin-runner
+# KRunner-Joplin-plugin 
 
 
 This plugin uses DBus to communicate with KRunner. <br/><br/>
