@@ -14,8 +14,6 @@ trap 'log_err ${LINENO} "$BASH_COMMAND"' ERR
 [ ! -d "$HOME/.local/share/kservices5/" ] && mkdir -p $HOME/.local/share/kservices5/
 [ ! -d "$HOME/.local/share/dbus-1/services/" ] && mkdir -p $HOME/.local/share/dbus-1/services/
 
-cd $(dirname ${0})
-
 [ ! -f "plasma-runner-joplin.desktop" ] && git clone "https://github.com/BelkaDev/KRunner-joplin-plugin" "KRunner-joplin-plugin" && cd KRunner-joplin-plugin
 
 npm install
