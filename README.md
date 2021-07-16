@@ -3,7 +3,11 @@
 
 This plugin uses DBus to communicate with KRunner. 
 
-https://user-images.githubusercontent.com/49416514/126002977-60662938-0110-441f-b57c-7084f94824ee.mp4
+
+
+https://user-images.githubusercontent.com/49416514/126006917-b305a9c5-d6b1-4bcc-94b7-466787250971.mp4
+
+
 
 
 Usage:
@@ -64,8 +68,9 @@ kquitapp5 krunner
 ***
 ## Features
 * Search, open, create new notes.
+* Output formatting.
 * Send focus to client upon selection.
-* If not running, joplin app will launch automatically.
+* Launch Joplin if it's not running initially
 
 
 ## Troubleshooting 
