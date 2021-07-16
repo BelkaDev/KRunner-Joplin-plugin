@@ -4,11 +4,8 @@ const config = require("../config.js");
 const exec = require("child_process").exec;
 const { createKRunnerInterface } = require("./dbus-connection");
 
-function sleep(ms) {
-  return new Promise(resolve => setTimeout(resolve, ms));
-}
 
-const execSync = cmd => {
+const execAsync = cmd => {
   return new Promise((resolve, reject) => {
     exec(cmd, (error, stdout, stderr) => {
       if (error) console.warn(error);
@@ -34,11 +31,11 @@ createKRunnerInterface({
       : `http://localhost:${config.sendAction.port}/notes/open/${note}`;
 
 
-    await execSync(`echo "$(xdotool search --onlyvisible --class joplin)"`)
+     execAsync(`echo "$(xdotool search --onlyvisible --class joplin)"`)
       .then(async (WID) => {
-        await fetch(path).then( () => {
+        fetch(path).then( () => {
         // Focus window
-        execSync(`xdotool windowactivate ${WID}`)
+        execAsync(`xdotool windowactivate ${WID}`)
         });
       })
       .catch(async ex => {
@@ -46,12 +43,12 @@ createKRunnerInterface({
             var proc = require("child_process").spawn(config.runner.joplinPath, [] , {detached:true, stdio:['ignore']});
             proc.unref();
 
-        await execSync(`until WID="$(xdotool search --onlyvisible --class joplin)"
+      execAsync(`until WID="$(xdotool search --onlyvisible --class joplin)"
       do sleep 1; done; printf "$WID"`).then(async (WID) => {      
-          await execSync("sleep 2s && echo ''").then(async ()=>{ // wait for client/plugin to init
-          await fetch(path).then((x)=>{ 
+          execAsync("sleep 2s").then(()=>{ // wait for client/plugin to init
+           fetch(path).then((x)=>{ 
           // Focus window
-          execSync(`xdotool windowactivate ${WID}`).catch()
+          execAsync(`xdotool windowactivate ${WID}`).catch()
           }).catch((e) =>
           console.error(e) 
           );
