@@ -114,7 +114,7 @@ createKRunnerInterface({
       const notebook = await searchFolder.json();
       if (notebook.items)
         output.push([
-          `${query.replace(folder, "")}:${notebook.items[0].id}`,
+          `${query.replace(folder+" ", "")}:${notebook.items[0].id}`,
           `Create new note "${query.replace(folder+" ", "")}" in ${
             notebook.items[0].title
           }`,
