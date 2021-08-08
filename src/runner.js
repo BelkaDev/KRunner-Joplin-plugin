@@ -36,9 +36,7 @@ createKRunnerInterface({
         fetch(path).then( () => {
         // Focus window
         execAsync(`xdotool windowactivate ${WID}`)
-        });
-      })
-      .catch(async ex => {
+        }).catch(async ex => {
         // Open client 
             var proc = require("child_process").spawn(config.runner.joplinPath, [] , {detached:true, stdio:['ignore']});
             proc.unref();
@@ -55,7 +53,8 @@ createKRunnerInterface({
           }); 
  
         });
-      });
+      });;
+      })
   },
   async matchFunction(query,log) {
     if (query.replace(/ .*/, "") !== config.runner.prefix) matchFunction();
@@ -108,6 +107,7 @@ createKRunnerInterface({
 
     query = /:/.test(query) ? query.split(":")[query.split(":").length -1] : query; // ignore filters
     if (folder) {
+      console.log(folder)
       const searchFolder = await fetch(
         `http://localhost:${config.webClipper.port}/search?query=${folder}&type=folder&token=${config.webClipper.token}`
       );

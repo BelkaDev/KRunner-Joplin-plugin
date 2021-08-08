@@ -1,6 +1,6 @@
 {
     "name": "joplin",
-    "version": "1.0.0",
+    "version": "0.0.2",
     "description": "A krunner plugin to open and create notes",
     "main": "src/index.js",
     "scripts": {
