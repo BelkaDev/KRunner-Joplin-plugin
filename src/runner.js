@@ -27,8 +27,8 @@ createKRunnerInterface({
     const [note, folder] = match.split(":");
 
     const path = folder
-      ? `http://localhost:${config.sendAction.port}/notes/create?folderId=${folder}&noteTitle=${note}`
-      : `http://localhost:${config.sendAction.port}/notes/open/${note}`;
+      ? `http://127.0.0.1:${config.sendAction.port}/notes/create?folderId=${folder}&noteTitle=${note}`
+      : `http://127.0.0.1:${config.sendAction.port}/notes/open/${note}`;
 
 
      execAsync(`echo "$(xdotool search --onlyvisible --class joplin)"`)
@@ -57,7 +57,6 @@ createKRunnerInterface({
       })
   },
   async matchFunction(query,log) {
-      console.log(query);
     if (query.replace(/ .*/, "") !== config.runner.prefix) matchFunction();
 
     query = query
@@ -74,7 +73,7 @@ createKRunnerInterface({
     }
 
     let results = await fetch(
-      `http://localhost:${config.webClipper.port}/search?query=${query}\
+      `http://127.0.0.1:${config.webClipper.port}/search?query=${query}\
       &order_by=${config.runner.order_by}\
       &order_dir=${config.runner.order_dir}\
       &limit=${config.runner.show}\
@@ -88,7 +87,7 @@ createKRunnerInterface({
       });
     let notes = results.map(async note => {
       await fetch(
-        `http://localhost:${config.webClipper.port}/folders/${note.parent_id}?token=${config.webClipper.token}`
+        `http://127.0.0.1:${config.webClipper.port}/folders/${note.parent_id}?token=${config.webClipper.token}`
       )
         .then(res => {
           return res.json();
@@ -110,7 +109,7 @@ createKRunnerInterface({
     if (folder) {
       console.log(folder)
       const searchFolder = await fetch(
-        `http://localhost:${config.webClipper.port}/search?query=${folder}&type=folder&token=${config.webClipper.token}`
+        `http://127.0.0.1:${config.webClipper.port}/search?query=${folder}&type=folder&token=${config.webClipper.token}`
       );
       const notebook = await searchFolder.json();
       if (notebook.items)
