@@ -57,6 +57,7 @@ createKRunnerInterface({
       })
   },
   async matchFunction(query,log) {
+      console.log(query);
     if (query.replace(/ .*/, "") !== config.runner.prefix) matchFunction();
 
     query = query
